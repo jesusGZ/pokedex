@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
+import Navigation from './components/Navigation/Navigation';
 import Tittle from './components/Tittle/Tittle';
 import './App.scss';
-import Navigation from './components/Navigation/Navigation';
+import Cards from './components/Cards/Cards';
 
 function App() {
 
@@ -11,9 +12,10 @@ function App() {
       <div className='content'>
         <Tittle />
         <Navigation />
+        <Cards />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
