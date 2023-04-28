@@ -1,8 +1,9 @@
 .tittle {
+  text-decoration: underline red;  
     .logo {
-        height: 0.7em; 
+        height: 0.8em; 
         will-change: filter;
-        transition: filter 300ms;
+        transition: filter 300ms;  
       }
       .logo:hover {
         filter: drop-shadow(0 0 2em #646cffaa);

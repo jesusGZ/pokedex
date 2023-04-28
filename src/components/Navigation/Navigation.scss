@@ -21,7 +21,9 @@
 
     .navigation-links.active {
         outline: none;
-        background-color: #EEE;
+        background-color: #EEE; 
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
         border-bottom: solid 5px  blue; 
     }
     .navigation-links {
