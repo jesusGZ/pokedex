@@ -1,3 +1,4 @@
+const IMAGES_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other';
 const BASE_URL = 'https://pokeapi.co/api/v2/';
 
 export async function getPokemons(limit, offset) {
@@ -9,6 +10,16 @@ export async function getPokemons(limit, offset) {
         return error;
     }
 }
+
+export async function getImageURL(pokemonId) {
+    try {
+        if (parseInt(pokemonId) >= 650) { return `${IMAGES_URL}/official-artwork/${pokemonId}.png`; }
+
+        return `${IMAGES_URL}/dream-world/${pokemonId}.svg`;
+    } catch (error) {
+        return error;
+    }
+};
 
 export async function getPokemonDetails(pokemonId) {
     try {
@@ -30,6 +41,16 @@ export async function getEvolutionsChain(pokemonId) {
         const response_2 = await fetch(`${BASE_URL}evolution-chain/${evolutionChainId}`);
         const evalution = await response_2.json();
         return evalution;
+    } catch (error) {
+        return error;
+    }
+}
+
+export async function getGenerations(id) {
+    try {
+        const response = await fetch(`${BASE_URL}generation/${id}`);
+        const data = await response.json();
+        return data;
     } catch (error) {
         return error;
     }
