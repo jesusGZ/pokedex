@@ -12,6 +12,10 @@
         padding: 1rem;
         height: 30vh;
         cursor: pointer;
+
+        :hover{
+          zoom: 1.4;
+        }
         
       .cards{
         width: 100%;
