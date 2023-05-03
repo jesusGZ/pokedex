@@ -25,7 +25,7 @@ const Cards = ({ pokemon, onClick }) => {
 			setPokemons(pokemons_list.results)
 			return;
 		} catch (error) {
-			return;
+			return error;
 		}
 	}
 
