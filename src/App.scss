@@ -12,8 +12,7 @@ body
     background-image: linear-gradient( 0deg, var( --bg-color ), var( --bg-color ) ), url( './img/bg.jpg' );
 }
 
-.pokedex-app
-{
+.pokedex-app{
     padding: 1rem;
     border-radius: 1rem;
 }
@@ -60,8 +59,7 @@ body
 /*
     Background Pokeball decoration
 */
-.bg-pokeball
-{
+.bg-pokeball{
     position: absolute;
     display: flex;
     align-items: center;
@@ -72,14 +70,12 @@ body
     color: rgba( 255,255,255,.2 );
 }
 
-.bg-pokeball::before, .bg-pokeball::after
-{
+.bg-pokeball::before, .bg-pokeball::after{
     display: block;
     border-radius: 100%;
 }
 
-.bg-pokeball::before
-{
+.bg-pokeball::before{
     content: '';
     position: relative;
     width: 10em;
@@ -136,7 +132,4 @@ body
     to { opacity: 0; }
 }
 
-@keyframes fill
-{
-    from { width: 0; }
-}
+@keyframes fill{ from { width: 0; }}

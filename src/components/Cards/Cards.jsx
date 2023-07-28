@@ -11,7 +11,7 @@ function Cards({ pokemon, onClick }) {
 	const imgURL = getImageURL(id),
 		className = types.map(({ type }) => 'type-' + type.name).join(' '),
 		paddedId = '#' + id.toString().padStart(3, '000');
-
+	console.log(imgURL);
 	return (
 		<div className="card-container" onClick={onClick}>
 			<div className={`card ${className}`}>
