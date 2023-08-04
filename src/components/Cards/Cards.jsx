@@ -15,24 +15,19 @@ function Cards({ pokemon, onClick }) {
 	return (
 		<div className="card-container" onClick={onClick}>
 			<div className={`card ${className}`}>
-
 				<div className="bg-pokeball"></div>
 				<span className="pokemon-id">{paddedId}</span>
-
 				<div className="card-title">
 					<h2>{name.replace(/-/g, ' ')}</h2>
-
 					<div className="pokemon-types">
 						{types.map(({ type }) => (
 							<span className="type" key={type.name}>{type.name}</span>
 						))}
 					</div>
 				</div>
-
 				<div className="pokemon-image">
 					<img alt={name} src={imgURL} />
 				</div>
-
 			</div>
 		</div>
 	);

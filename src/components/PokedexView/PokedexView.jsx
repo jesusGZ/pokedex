@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect } from 'react';
 
 import { usePokemons } from '../../context/pokemonsProvider';
 import { useGeneration } from '../../hooks';
