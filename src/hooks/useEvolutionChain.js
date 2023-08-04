@@ -13,11 +13,7 @@ const useEvolutionChain = (pokemonId) => {
 	useEffect(() => {
 		if (pokemonId) {
 			setIsLoading(true);
-
-			getEvolutionsChain(pokemonId).then((evolution) => {
-				setCurrentEvolution(evolution);
-				setIsLoading(false);
-			});
+			getEvolutionsChain(pokemonId).then((evolution) => { setCurrentEvolution(evolution); setIsLoading(false); });
 		}
 	}, [pokemonId]);
 

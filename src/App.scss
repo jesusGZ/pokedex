@@ -17,9 +17,6 @@ body
     border-radius: 1rem;
 }
 
-/*
-    Pokemon type colors
-*/
 .type-normal { --color: #C2C2A1; }
 
 .type-flying { --color: #BAB0D5; }
@@ -56,9 +53,6 @@ body
 
 .type-dragon { --color: #F9BE00; }
 
-/*
-    Background Pokeball decoration
-*/
 .bg-pokeball{
     position: absolute;
     display: flex;
@@ -84,8 +78,7 @@ body
     clip-path: polygon( 0 0, 0 40%, 50% 40%, 50% 60%, 0 60%, 0 100%, 100% 100%, 100% 60%, 50% 60%, 50% 40%, 100% 40%, 100% 0 );
 }
 
-.bg-pokeball::after
-{
+.bg-pokeball::after{
     content: '';
     position: absolute;
     width: 5em;
@@ -93,41 +86,32 @@ body
     background-color: currentColor;
 }
 
-/*
-    Animations
-*/
-@keyframes spin
-{
+@keyframes spin{
     from { transform: rotate( 0 ); }
     to { transform: rotate( 360deg ); }
 }
 
-@keyframes pull-up-center
-{
+@keyframes pull-up-center{
     from { transform: translateY( 50% ) translateX( -50% ); opacity: 0; }
     to { transform: translateY( 0 ) translateX( -50% ); opacity: 1; }
 }
 
-@keyframes pull-down-center
-{
+@keyframes pull-down-center{
     from { transform: translateY( 0 ) translateX( -50% ); opacity: 1; }
     to { transform: translateY( 50% ) translateX( -50% ); opacity: 0; }
 }
 
-@keyframes pull-up
-{
+@keyframes pull-up{
     from { transform: translateY( 10% ); opacity: 0; }
     to { transform: translateY( 0 ); opacity: 1; }
 }
 
-@keyframes fade-in
-{
+@keyframes fade-in{
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes fade-out
-{
+@keyframes fade-out{
     from { opacity: 1; }
     to { opacity: 0; }
 }

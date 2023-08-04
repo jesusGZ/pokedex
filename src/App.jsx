@@ -1,37 +1,35 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Navigation from './components/Navigation/Navigation';
-import Tittle from './components/Tittle/Tittle';
-import DetailsView from './components/DetailsView';
-import generations from './data/generations';
-import './App.scss';
 import PokemonsProvider from './context/pokemonsProvider';
-import PokedexView from './components/PokedexView'
+import DetailsView from './components/DetailsView';
+import PokedexView from './components/PokedexView';
+import Tittle from './components/Tittle/Tittle';
+import generations from './constants/generations';
 import withRouter from './router/withRouter';
+import './App.scss';
+
 function App() {
-
   return (
-    <>
-      <PokemonsProvider>
-        <div className='pokedex-app'>
-          <Tittle />
-          <Navigation />
+    <PokemonsProvider>
+      <div className='pokedex-app'>
+        <Tittle />
+        <Navigation />
 
-          <Switch>
-            <Route exact path="/">
-              <Redirect to={generations[0].link} />
+        <Switch>
+          <Route exact path="/">
+            <Redirect to={generations[0].link} />
+          </Route>
+          {generations.map(({ id, link }) => (
+            <Route key={id} exact path={'/' + link}>
+              <PokedexView generation={id} />
             </Route>
-            {generations.map(({ id, link }) => (
-              <Route key={id} exact path={'/' + link}>
-                <PokedexView generation={id} />
-              </Route>
-            ))}
-          </Switch>
+          ))}
+        </Switch>
 
-          <DetailsView />
-        </div>
-      </PokemonsProvider>
-    </>
+        <DetailsView />
+      </div>
+    </PokemonsProvider>
   );
 }
 

@@ -1,4 +1,6 @@
-import generations from '../data/generations';
+import { extractIdOfText } from '../constants/regex';
+import generations from '../constants/generations';
+import { baseURL } from '../constants';
 
 /**
  * Recursively iterate over an evolution chain and normalize into an array.
@@ -8,32 +10,21 @@ import generations from '../data/generations';
  * @returns {array}
  */
 export const normalizeEvolutionChain = (evolution) => {
-    if (!evolution.evolves_to.length) {
-        return [];
-    }
+    if (!evolution.evolves_to.length) return [];
 
-    const triggersDisplayName = {
-        'level-up': 'Lvl',
-        trade: 'Trade',
-        'use-item': 'Use',
-    };
+    const triggersDisplayName = { 'level-up': 'Lvl', trade: 'Trade', 'use-item': 'Use', };
 
-    // Extract pokemon ID from 'species' URL (https://pokeapi.co/api/v2/pokemon-species/{id}/).
-    const extractId = (url) => url.match(/\/(\d+)\//)[1];
+    const extractId = (url) => url.match(extractIdOfText)[1];
 
     return evolution.evolves_to.reduce((carry, nextEvolution) => {
-        const details = nextEvolution.evolution_details[0],
-            currentId = extractId(evolution.species.url),
-            nextId = extractId(nextEvolution.species.url);
+
+        const details = nextEvolution.evolution_details[0];
+        const currentId = extractId(evolution.species.url);
+        const nextId = extractId(nextEvolution.species.url);
 
         carry.push({
-            currentId,
-            nextId,
-            currentName: evolution.species.name,
-            nextName: nextEvolution.species.name,
-            currentImage: getImageURL(currentId),
-            nextImage: getImageURL(nextId),
-            trigger: triggersDisplayName[details.trigger.name],
+            currentId, nextId, currentName: evolution.species.name, nextName: nextEvolution.species.name,
+            currentImage: getImageURL(currentId), nextImage: getImageURL(nextId), trigger: triggersDisplayName[details.trigger.name],
             triggerValue: details.min_level || details.min_happiness || details.item?.name.replace('-', ' ') || '',
         });
 
@@ -51,13 +42,8 @@ export const normalizeEvolutionChain = (evolution) => {
  * @returns {string}
  */
 export const getImageURL = (pokemonId) => {
-    const baseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other';
-
     // Has only PNG.
-    if (parseInt(pokemonId) >= 650) {
-        return `${baseURL}/official-artwork/${pokemonId}.png`;
-    }
-
+    if (parseInt(pokemonId) >= 650) return `${baseURL}/official-artwork/${pokemonId}.png`;
     // Has SVG.
     return `${baseURL}/dream-world/${pokemonId}.svg`;
 };
@@ -73,7 +59,6 @@ export const getGenerationByPokemonId = (id) => {
     return generations.find(({ offset, limit }) => {
         const firstId = offset + 1;
         const lastId = firstId + limit;
-
         return id >= firstId && id <= lastId;
     });
 };

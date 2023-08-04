@@ -1,6 +1,6 @@
 import React from 'react';
 
-import generations from '../../data/generations';
+import generations from '../../constants/generations';
 import CustomNavLink from './CustomNavLink';
 import './Navigation.scss';
 
