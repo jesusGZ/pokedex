@@ -13,7 +13,14 @@ function Cards({ pokemon, onClick }) {
 	const className = types.map(({ type }) => 'type-' + type.name).join(' ');
 	const paddedId = '#' + id.toString().padStart(3, '000');
 
-	useEffect(async () => { const img_uRL = await getImageURL(id); setImgURL(img_uRL); }, [id]);
+	useEffect(async () => {
+		try {
+			const img_uRL = await getImageURL(id);
+			setImgURL(img_uRL);
+		} catch (error) {
+			console.log(error);
+		}
+	}, [id]);
 
 	return (
 		<CardContainer onClick={onClick}>

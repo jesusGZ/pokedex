@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { Tittles } from './Tittle.styled';
 import viteLogo from '/favicon.ico';
-import './Tittle.scss';
 
 const Tittle = () => {
-    return (<div className='tittle'><h1>P{<img src={viteLogo} className="logo" />}kédex</h1></div>);
+    return (<Tittles><h1>P{<img src={viteLogo} className="logo" />}kédex</h1></Tittles>);
 };
 
 export default Tittle;

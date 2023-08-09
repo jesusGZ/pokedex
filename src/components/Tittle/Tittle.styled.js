@@ -1,5 +1,7 @@
-.tittle { 
-    text-decoration: underline red;  
+import styled from "styled-components";
+
+export const Tittles = styled.div`
+ text-decoration: underline red;   
     text-align: center; 
     position: relative;
   h1{
@@ -31,4 +33,4 @@
           animation: logo-spin infinite 20s linear;
         }
       }
-}
+`; 

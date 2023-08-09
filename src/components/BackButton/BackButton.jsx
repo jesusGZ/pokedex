@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import './BackButton.scss';
+import { BackButtons } from './BackButton.styled';
 
 function BackButton({ onClick }) {
-    return <div className="back-button" onClick={onClick} />;
+    return <BackButtons onClick={onClick} />;
 }
 
 export default memo(BackButton);
