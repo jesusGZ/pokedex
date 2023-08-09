@@ -4,7 +4,7 @@ import { usePokemons } from '../../context/pokemonsProvider';
 import { useGeneration } from '../../hooks';
 import { Loader } from '../Loader';
 import Cards from '../Cards/Cards';
-import './PokedexView.scss';
+import { PokedexViews } from './PokedexView.styled.js';
 
 const PokedexView = ({ generation }) => {
 	const { pokemons, setPokemons, setCurrentPokemonId } = usePokemons();
@@ -15,11 +15,11 @@ const PokedexView = ({ generation }) => {
 	if (isLoading) { return <Loader />; }
 
 	return (
-		<div className="pokedex-view">
+		<PokedexViews>
 			{pokemons.map((pokemon) => {
 				return (<Cards pokemon={pokemon} key={pokemon.id} onClick={() => setCurrentPokemonId(pokemon.id)} />);
 			})}
-		</div>
+		</PokedexViews>
 	);
 };
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './Loader.scss';
+import { Loaders } from './Loader.styled.js';
 
 function Loader() {
-	return (<div className="loader">Cargando...</div>);
+	return (<Loaders>Cargando...</Loaders>);
 }
 
 export default Loader;
