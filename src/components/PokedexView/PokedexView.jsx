@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
 import { usePokemons } from '../../context/pokemonsProvider';
+import { PokedexViews } from './PokedexView.styled.js';
 import { useGeneration } from '../../hooks';
 import { Loader } from '../Loader';
 import Cards from '../Cards/Cards';
-import { PokedexViews } from './PokedexView.styled.js';
 
 const PokedexView = ({ generation }) => {
 	const { pokemons, setPokemons, setCurrentPokemonId } = usePokemons();

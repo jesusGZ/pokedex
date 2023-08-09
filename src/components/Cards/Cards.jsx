@@ -1,35 +1,38 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 
+import { CardContainer, Card, PokemonId, CardTitle, PokemonTypes, PokemonImage } from './Cards.styled.js';
 import { getImageURL } from '../../services/pokeApi';
-import './Cards.scss';
 
 function Cards({ pokemon, onClick }) {
+
 	if (!pokemon) { return null; }
 
-	const { name, id, types } = pokemon;
+	const [imgURL, setImgURL] = useState(0);
 
-	const imgURL = getImageURL(id),
-		className = types.map(({ type }) => 'type-' + type.name).join(' '),
-		paddedId = '#' + id.toString().padStart(3, '000');
-	console.log(imgURL);
+	const { name, id, types } = pokemon;
+	const className = types.map(({ type }) => 'type-' + type.name).join(' ');
+	const paddedId = '#' + id.toString().padStart(3, '000');
+
+	useEffect(async () => { const img_uRL = await getImageURL(id); setImgURL(img_uRL); }, [id]);
+
 	return (
-		<div className="card-container" onClick={onClick}>
-			<div className={`card ${className}`}>
+		<CardContainer onClick={onClick}>
+			<Card className={`card ${className}`}>
 				<div className="bg-pokeball"></div>
-				<span className="pokemon-id">{paddedId}</span>
-				<div className="card-title">
+				<PokemonId>{paddedId}</PokemonId>
+				<CardTitle>
 					<h2>{name.replace(/-/g, ' ')}</h2>
-					<div className="pokemon-types">
+					<PokemonTypes>
 						{types.map(({ type }) => (
-							<span className="type" key={type.name}>{type.name}</span>
+							<span key={type.name}>{type.name}</span>
 						))}
-					</div>
-				</div>
-				<div className="pokemon-image">
+					</PokemonTypes>
+				</CardTitle>
+				<PokemonImage>
 					<img alt={name} src={imgURL} />
-				</div>
-			</div>
-		</div>
+				</PokemonImage>
+			</Card>
+		</CardContainer>
 	);
 }
 
