@@ -6,7 +6,7 @@ import BackButton from '../BackButton';
 import Details from '../Details';
 import Overlay from '../Overlay';
 import Cards from '../Cards';
-import './DetailsView.scss';
+import { DetailsViewContainer } from './DetailsView.styled';
 
 export default function DetailsView() {
     const { currentPokemon, setCurrentPokemonId } = usePokemons();
@@ -26,11 +26,11 @@ export default function DetailsView() {
     return ReactDOM.createPortal(
         <>
             <Overlay hidden={isHidden} onClick={closeModal} />
-            <div className={`details-view-container ${isHidden && 'hidden'}`} onAnimationEnd={handleAnimationEnd}>
+            <DetailsViewContainer className={`details-view-container ${isHidden && 'hidden'}`} onAnimationEnd={handleAnimationEnd}>
                 <BackButton onClick={closeModal} />
                 <Cards pokemon={currentPokemon} />
                 <Details pokemon={currentPokemon} />
-            </div>
+            </DetailsViewContainer>
         </>, document.body,
     );
 }
