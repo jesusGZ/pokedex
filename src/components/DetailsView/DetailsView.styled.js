@@ -26,21 +26,21 @@ export const DetailsViewContainer = styled.div`
   left: 50vw;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-end; 
   position: fixed;
   z-index: 99999;
   background-color: #fff;
   border-radius: 3rem;
 
   animation: ${props => (props.isHidden ? pullDownAnimation : pullUpAnimation)} 0.3s both ease-out;
-  
+
   &.hidden {
-      animation: ${pullDownAnimation} 0.3s both ease-out;
-    }
+    animation: ${props => (props.isHidden ? pullUpAnimation : pullDownAnimation)} 0.3s both ease-out;
+  }
 
   .card-container {
     cursor: auto;
-    margin: 0;
+    margin: 0 ; /* Agrega esta propiedad para centrar horizontalmente */
     padding: 0;
     height: auto;
     transform: translateY(40px);

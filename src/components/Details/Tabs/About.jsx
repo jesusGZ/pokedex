@@ -1,33 +1,37 @@
+import React from 'react';
+import { TabContent, TabTable, TabTableCell } from '../Details.syled'; // Importa los componentes de estilo desde el archivo DetailsStyled.js
+
 function About({ pokemon }) {
 	const types = pokemon.types.map(({ type }) => type.name).join(', ');
-
-	const abilities = pokemon.abilities.map(({ ability }) => { return ability.name.replace('-', ' '); }).join(', ');
+	const abilities = pokemon.abilities.map(({ ability }) => {
+		return ability.name.replace('-', ' ');
+	}).join(', ');
 	const height = pokemon.height * 10; // cm
 	const weight = pokemon.weight / 10; // kg
 
 	return (
-		<div className="tab tab-about">
-			<table>
+		<TabContent>
+			<TabTable>
 				<tbody>
 					<tr>
-						<td>Species</td>
-						<td>{types}</td>
+						<TabTableCell>Species</TabTableCell>
+						<TabTableCell>{types}</TabTableCell>
 					</tr>
 					<tr>
-						<td>Height</td>
-						<td>{height}cm</td>
+						<TabTableCell>Height</TabTableCell>
+						<TabTableCell>{height}cm</TabTableCell>
 					</tr>
 					<tr>
-						<td>Weight</td>
-						<td>{weight}kg</td>
+						<TabTableCell>Weight</TabTableCell>
+						<TabTableCell>{weight}kg</TabTableCell>
 					</tr>
 					<tr>
-						<td>Abilities</td>
-						<td>{abilities}</td>
+						<TabTableCell>Abilities</TabTableCell>
+						<TabTableCell>{abilities}</TabTableCell>
 					</tr>
 				</tbody>
-			</table>
-		</div>
+			</TabTable>
+		</TabContent>
 	);
 }
 
