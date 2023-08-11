@@ -30,9 +30,7 @@ function Cards({ pokemon, onClick }) {
 				<CardTitle>
 					<h2>{name.replace(/-/g, ' ')}</h2>
 					<PokemonTypes>
-						{types.map(({ type }) => (
-							<span key={type.name}>{type.name}</span>
-						))}
+						{types.map(({ type }) => (<span key={type.name}>{type.name}</span>))}
 					</PokemonTypes>
 				</CardTitle>
 				<PokemonImage>

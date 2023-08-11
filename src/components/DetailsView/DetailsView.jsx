@@ -11,31 +11,22 @@ export default function DetailsView() {
     const { currentPokemon, setCurrentPokemonId } = usePokemons();
     const [isHidden, setIsHidden] = useState(false);
 
-    const closeModal = useCallback(() => {
-        setIsHidden(true);
-    }, []);
+    const closeModal = useCallback(() => { setIsHidden(true); }, []);
 
     const handleAnimationEnd = useCallback(() => {
-        if (isHidden) {
-            setCurrentPokemonId(-1);
-        }
+        if (isHidden) { setCurrentPokemonId(-1); }
 
         setIsHidden(false);
-
     }, [isHidden, setCurrentPokemonId]);
 
-    if (!currentPokemon) {
-        return null;
-    }
+    if (!currentPokemon) { return null; }
 
-    return ReactDOM.createPortal(
-        <>
-            <Overlay onClick={closeModal} hidden={isHidden} />
-            <DetailsViewContainer isHidden={isHidden} onAnimationEnd={handleAnimationEnd}>
-                <BackButton onClick={closeModal} />
-                <Cards pokemon={currentPokemon} />
-                <Details pokemon={currentPokemon} />
-            </DetailsViewContainer>
-        </>, document.body
-    );
+    return ReactDOM.createPortal(<>
+        <Overlay onClick={closeModal} hidden={isHidden} />
+        <DetailsViewContainer isHidden={isHidden} onAnimationEnd={handleAnimationEnd}>
+            <BackButton onClick={closeModal} />
+            <Cards pokemon={currentPokemon} />
+            <Details pokemon={currentPokemon} />
+        </DetailsViewContainer>
+    </>, document.body);
 }
