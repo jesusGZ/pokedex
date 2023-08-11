@@ -14,19 +14,19 @@ function About({ pokemon }) {
 			<TabTable>
 				<tbody>
 					<tr>
-						<TabTableCell>Species</TabTableCell>
+						<TabTableCell>Tipo:</TabTableCell>
 						<TabTableCell>{types}</TabTableCell>
 					</tr>
 					<tr>
-						<TabTableCell>Height</TabTableCell>
+						<TabTableCell>Altura:</TabTableCell>
 						<TabTableCell>{height}cm</TabTableCell>
 					</tr>
 					<tr>
-						<TabTableCell>Weight</TabTableCell>
+						<TabTableCell>Peso:</TabTableCell>
 						<TabTableCell>{weight}kg</TabTableCell>
 					</tr>
 					<tr>
-						<TabTableCell>Abilities</TabTableCell>
+						<TabTableCell>Habilidades:</TabTableCell>
 						<TabTableCell>{abilities}</TabTableCell>
 					</tr>
 				</tbody>

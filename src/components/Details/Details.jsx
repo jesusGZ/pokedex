@@ -6,11 +6,12 @@ import BaseStats from './Tabs/BaseStats';
 import Evolution from './Tabs/Evolution';
 import About from './Tabs/About';
 
-const tabs = [{ id: TAB_ABOUT, label: 'About' }, { id: TAB_STATS, label: 'Base Stats' }, { id: TAB_EVOLUTION, label: 'Evolution' },];
 const TAB_EVOLUTION = 'evolution';
 const TAB_STATS = 'base-stats';
-const TAB_DEFAULT = TAB_ABOUT;
 const TAB_ABOUT = 'about';
+const TAB_DEFAULT = TAB_ABOUT;
+
+const tabs = [{ id: TAB_ABOUT, label: 'Hacerca de:' }, { id: TAB_STATS, label: 'Estadisticas base' }, { id: TAB_EVOLUTION, label: 'Evolución' },];
 
 function Details({ pokemon }) {
 	const [currentTab, setCurrentTab] = useState(TAB_DEFAULT);
